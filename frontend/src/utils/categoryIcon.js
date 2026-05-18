@@ -4,9 +4,6 @@ const icons = {
     audio: "🎧",
     hogar: "🏠",
     deportes: "⚽",
-    ropa: "👕",
-    libros: "📚",
-    juguetes: "🧸",
 };
 
 export function categoryIcon(category = "") {

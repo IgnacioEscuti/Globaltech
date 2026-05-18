@@ -5,7 +5,6 @@ import { useCart } from "../context/CartContext.jsx";
 export default function CartSidebar() {
     const { sidebarOpen, setSidebarOpen, cart, cartId, removeFromCart } = useCart();
 
-    // Bloquear scroll del body cuando el sidebar está abierto
     useEffect(() => {
         document.body.style.overflow = sidebarOpen ? "hidden" : "";
         return () => { document.body.style.overflow = ""; };

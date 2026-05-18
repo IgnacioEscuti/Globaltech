@@ -42,7 +42,6 @@ export default function Cart() {
             </div>
 
             <div className="cart-page">
-                {/* Tabla */}
                 <div>
                     <table className="cart-table">
                         <thead>
@@ -71,7 +70,6 @@ export default function Cart() {
                     </table>
                 </div>
 
-                {/* Resumen */}
                 <div className="cart-summary">
                     <h3>Resumen del pedido</h3>
                     {cart.products.map(item => (

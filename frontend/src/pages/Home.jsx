@@ -22,7 +22,6 @@ export default function Home() {
 
     return (
         <>
-            {/* Hero */}
             <section className="hero">
                 <p className="hero-eyebrow">Nueva colección 2026</p>
                 <h1>Tecnología que<br /><span className="hero-highlight">te inspira</span></h1>
@@ -36,7 +35,6 @@ export default function Home() {
             </section>
 
             <div className="container">
-                {/* Banners */}
                 <div className="banners">
                     <Link to="/products?query=category:computacion" className="banner banner-1">
                         <span className="banner-icon">💻</span>
@@ -52,7 +50,6 @@ export default function Home() {
                     </Link>
                 </div>
 
-                {/* Stats */}
                 <div className="stats">
                     <div className="stat">
                         <span className="stat-number">+500</span>
@@ -68,7 +65,6 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Categories */}
                 <p className="section-label">Categorías</p>
                 <p className="section-title">Explorá por categoría</p>
                 <div className="categories">
@@ -88,7 +84,6 @@ export default function Home() {
                     </Link>
                 </div>
 
-                {/* Featured products */}
                 <p className="section-label">Destacados</p>
                 <p className="section-title">Productos populares</p>
                 <div className="products-grid">

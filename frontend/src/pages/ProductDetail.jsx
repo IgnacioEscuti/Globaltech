@@ -47,12 +47,10 @@ export default function ProductDetail() {
             <Link to="/products" className="back-link">← Volver a productos</Link>
 
             <div className="product-detail-page">
-                {/* Imagen placeholder */}
                 <div className="product-image-box">
                     {categoryIcon(product.category)}
                 </div>
 
-                {/* Info */}
                 <div className="product-detail-info">
                     <span className="category-badge">{product.category}</span>
                     <h1>{product.title}</h1>

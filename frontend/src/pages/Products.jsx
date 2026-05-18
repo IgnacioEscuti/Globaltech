@@ -23,7 +23,6 @@ export default function Products() {
     const sort  = searchParams.get("sort")  || "";
     const query = searchParams.get("query") || "";
 
-    // Extraer categoría del query param (ej: "category:audio" → "audio")
     const activeCategory = query.startsWith("category:") ? query.split(":")[1] : "";
 
     useEffect(() => {
@@ -64,7 +63,6 @@ export default function Products() {
     return (
         <div className="products-page">
 
-            {/* Page header */}
             <div className="products-header">
                 <div className="products-header-inner">
                     <h1 className="products-title">Productos</h1>
@@ -76,7 +74,6 @@ export default function Products() {
                     )}
                 </div>
 
-                {/* Sort + Clear */}
                 <div className="products-sort">
                     <select
                         className="sort-select"
@@ -95,7 +92,6 @@ export default function Products() {
                 </div>
             </div>
 
-            {/* Category chips */}
             <div className="category-chips-bar">
                 {CATEGORIES.map(cat => (
                     <button
@@ -109,7 +105,6 @@ export default function Products() {
             </div>
 
             <div className="products-page-body">
-                {/* Grid */}
                 {loading ? (
                     <div className="products-loading">
                         {[...Array(8)].map((_, i) => <div key={i} className="product-skeleton" />)}
