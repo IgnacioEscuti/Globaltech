@@ -18,9 +18,24 @@ Aplicación de e-commerce full-stack con **React + Vite** en el frontend y **Nod
 ## Estructura del proyecto
 
 ```
-├── backend/               # API REST con Express
+├── backend/               # API REST con Express (arquitectura en capas)
 │   ├── src/
-│   │   ├── app.js
+│   │   ├── server.js              # Entry point: conecta la DB y levanta el server
+│   │   ├── app.js                 # Configuración de Express y montaje de rutas
+│   │   ├── config/
+│   │   │   └── db.js              # Conexión a MongoDB
+│   │   ├── controllers/
+│   │   │   ├── product.controller.js
+│   │   │   └── cart.controller.js
+│   │   ├── services/
+│   │   │   ├── product.service.js
+│   │   │   └── cart.service.js
+│   │   ├── repositories/
+│   │   │   ├── product.repository.js
+│   │   │   └── cart.repository.js
+│   │   ├── dao/
+│   │   │   ├── product.dao.js
+│   │   │   └── cart.dao.js
 │   │   ├── models/
 │   │   │   ├── product.model.js
 │   │   │   └── cart.model.js
@@ -34,6 +49,7 @@ Aplicación de e-commerce full-stack con **React + Vite** en el frontend y **Nod
 │
 └── frontend/              # SPA con React
     ├── src/
+    │   ├── main.jsx              # Entry point
     │   ├── App.jsx
     │   ├── context/
     │   │   └── CartContext.jsx   # Estado global del carrito
@@ -44,11 +60,13 @@ Aplicación de e-commerce full-stack con **React + Vite** en el frontend y **Nod
     │   │   ├── CartSidebar.jsx
     │   │   ├── ProductCard.jsx
     │   │   └── Pagination.jsx
-    │   └── pages/
-    │       ├── Home.jsx
-    │       ├── Products.jsx
-    │       ├── ProductDetail.jsx
-    │       └── Cart.jsx
+    │   ├── pages/
+    │   │   ├── Home.jsx
+    │   │   ├── Products.jsx
+    │   │   ├── ProductDetail.jsx
+    │   │   └── Cart.jsx
+    │   └── utils/
+    │       └── categoryIcon.js   # Iconos por categoría de producto
     └── package.json
 ```
 
