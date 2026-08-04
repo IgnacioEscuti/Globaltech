@@ -14,7 +14,7 @@ class CartDAO {
     }
 
     findByIdAndUpdate(id, data) {
-        return Cart.findByIdAndUpdate(id, data, { new: true });
+        return Cart.findByIdAndUpdate(id, data, { new: true }).populate("products.product");
     }
 }
 

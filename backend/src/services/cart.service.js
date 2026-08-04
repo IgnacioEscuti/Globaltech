@@ -1,17 +1,20 @@
 import cartRepository from "../repositories/cart.repository.js";
+import { validCart, validProductInCart, validQuantity } from "../utils/errors.utils.js";
 
 class CartService {
     createCart() {
         return cartRepository.create({ products: [] });
     }
 
-    getCart(cid) {
-        return cartRepository.getByIdPopulated(cid);
+    async getCart(cid) {
+        const cart = await cartRepository.getByIdPopulated(cid);
+        validCart(cart);
+        return cart;
     }
 
     async addProduct(cid, pid) {
         const cart = await cartRepository.getById(cid);
-        if (!cart) return null;
+        validCart(cart);
 
         const existingItem = cart.products.find(p => p.product.toString() === pid);
         if (existingItem) {
@@ -26,31 +29,37 @@ class CartService {
 
     async removeProduct(cid, pid) {
         const cart = await cartRepository.getById(cid);
-        if (!cart) return null;
+        validCart(cart);
 
         cart.products = cart.products.filter(p => p.product.toString() !== pid);
         await cart.save();
         return cart;
     }
 
-    updateCart(cid, products) {
-        return cartRepository.update(cid, { products });
+    async updateCart(cid, products) {
+        const cart = await cartRepository.update(cid, { products });
+        validCart(cart);
+        return cart;
     }
 
     async updateProductQuantity(cid, pid, quantity) {
+        validQuantity(quantity);
+
         const cart = await cartRepository.getById(cid);
-        if (!cart) return { error: "cart" };
+        validCart(cart);
 
         const item = cart.products.find(p => p.product.toString() === pid);
-        if (!item) return { error: "product" };
+        validProductInCart(item);
 
         item.quantity = quantity;
         await cart.save();
-        return { cart };
+        return cart;
     }
 
-    clearCart(cid) {
-        return cartRepository.update(cid, { products: [] });
+    async clearCart(cid) {
+        const cart = await cartRepository.update(cid, { products: [] });
+        validCart(cart);
+        return cart;
     }
 }
 

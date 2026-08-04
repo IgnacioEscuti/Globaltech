@@ -1,4 +1,5 @@
 import productRepository from "../repositories/product.repository.js";
+import { validProduct } from "../utils/errors.utils.js";
 
 class ProductService {
     async getProducts({ limit = 10, page = 1, sort, query, baseUrl }) {
@@ -35,8 +36,10 @@ class ProductService {
         };
     }
 
-    getProductById(id) {
-        return productRepository.getById(id);
+    async getProductById(id) {
+        const product = await productRepository.getById(id);
+        validProduct(product);
+        return product;
     }
 }
 
